@@ -4,8 +4,8 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
   final List<ShopItem> items = [
-    ShopItem("Lihat Produk", Icons.checklist),
-    ShopItem("Tambah Produk", Icons.add_shopping_cart),
+    ShopItem("Lihat Item", Icons.checklist),
+    ShopItem("Tambah Item", Icons.add_shopping_cart),
     ShopItem("Logout", Icons.logout),
   ];
 
@@ -23,7 +23,7 @@ class MyHomePage extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Text(
-                  'Hana Grosir',
+                  'Welcome To Hana Grosir',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -63,9 +63,9 @@ class ShopCard extends StatelessWidget {
   const ShopCard(this.item, {Key? key}) : super(key: key);
 
   Color getColorForItem(ShopItem item) {
-    if (item.name == "Lihat Produk") {
+    if (item.name == "Lihat Item") {
       return Colors.blue;
-    } else if (item.name == "Tambah Produk") {
+    } else if (item.name == "Tambah Item") {
       return Colors.green;
     } else if (item.name == "Logout") {
       return Colors.red;
