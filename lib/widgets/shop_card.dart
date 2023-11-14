@@ -1,54 +1,8 @@
 import 'package:flutter/material.dart';
-
-class MyHomePage extends StatelessWidget {
-  MyHomePage({Key? key}) : super(key: key);
-
-  final List<ShopItem> items = [
-    ShopItem("Lihat Item", Icons.checklist),
-    ShopItem("Tambah Item", Icons.add_shopping_cart),
-    ShopItem("Logout", Icons.logout),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hana Grosir', style: TextStyle(color: Colors.white)),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                child: Text(
-                  'Welcome To Hana Grosir',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              GridView.count(
-                primary: true,
-                padding: const EdgeInsets.all(20),
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                children: items.map((ShopItem item) {
-                  return ShopCard(item);
-                }).toList(),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+import 'package:hana_grosir/screens/shoplist_form.dart';
+import 'package:hana_grosir/screens/shop_list_page.dart';
+import 'package:hana_grosir/screens/menu.dart';
+import 'package:hana_grosir/models/item_model.dart';
 
 class ShopItem {
   final String name;
@@ -59,8 +13,10 @@ class ShopItem {
 
 class ShopCard extends StatelessWidget {
   final ShopItem item;
+  final List<Product> products;
 
-  const ShopCard(this.item, {Key? key}) : super(key: key);
+  const ShopCard({Key? key, required this.item, required this.products})
+      : super(key: key); // Constructor
 
   Color getColorForItem(ShopItem item) {
     if (item.name == "Lihat Item") {
@@ -77,17 +33,36 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color cardColor = getColorForItem(item);
-
     return Material(
       color: cardColor,
       child: InkWell(
+        // Area responsif terhadap sentuhan
         onTap: () {
+          // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
+
+          // Navigate ke route yang sesuai (tergantung jenis tombol)
+          if (item.name == "Tambah Item") {
+            // TODO: Gunakan Navigator.push untuk melakukan navigasi ke MaterialPageRoute yang mencakup ShopFormPage.
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ShopFormPage(),
+                ));
+          } else if (item.name == "Lihat Item") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ShopListPage(products: products),
+              ),
+            );
+          }
         },
         child: Container(
+          // Container untuk menyimpan Icon dan Text
           padding: const EdgeInsets.all(8),
           child: Center(
             child: Column(

@@ -15,6 +15,90 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+========================================== Tugas PBP 8 ==================================================
+
+1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+   `Navigator.push()` dan `Navigator.pushReplacement()` adalah dua metode yang digunakan dalam Flutter untuk mengelola navigasi screen dalam aplikasi. Perbedaan utama antara kedua metode tersebut adalah:
+
+- Navigator.push()
+
+  - Metode ini digunakan untuk menambahkan layar baru ke dalam navigasi
+  - Saat kita menggunakan `Navigator.push()`, layar baru akan ditambahkan di atas layar saat ini dalam numpukan navigasi
+  - User masih dapat kembali ke layar sebelumnya dengan menekan tombol `Back` pada perangkat atau dengan menggunakan fungsi `Navigator.pop()`
+  - Contoh penggunaan:
+    `Navigator.push(`
+    `context,`
+    `MaterialPageRoute(builder: (context) => NewScreen()),);`
+
+- Navigator.pushReplacement()
+  - Metode ini juga digunakan untuk menambahkan layar baru ke dalam tumpukan navigasi
+  - Tetapi, perbedaan utamanya terletak pada setelah menggunakan `Navigator.pushReplacement()`, layar sebelumnya dalam tumpukan akan dihapus, sehingga user tidak dapat kembali ke layar sebelumnya
+  - Ini berguna ketika kita ingin menggantikan layar yang ada dengan layar yang baru dan menghapusnya dari tumpukan
+  - Contoh penggunaan:
+    `Navigator.pushReplacement(`
+    `context,`
+    `MaterialPageRoute(builder: (context) => NewScreen()),`
+    `);`
+  - Ini biasa digunakan untuk layar login agar user tidak dapat kembali ke layar login setelah login berhasil
+
+2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+
+- Container
+  - Ini digunakan untuk mengelilingi dan mengatur tata letak anak-anaknya.
+  - Ini dapat digunakan sebagai wadah umum untuk widget lainnya dan memberikan kontrol atas properti, seperti margin, dekorasi, dan padding.
+- Row dan Column
+  - Row digunakan untuk menempatkan widget sejajar secara horizontal sedangkan column digunakan untuk menempatkan widget secara vertikal. Keduanya berguna untuk menyusun eidget dalam satu arah.
+- ListView
+  - Ini digunakan untuk menampilkan aftar widget dalam daftar gulir.
+  - Ini berguna saat kita memiliki banyak item yang ingin ditampilkan dalam satu tampilan
+- GridView
+  - Ini digunakan untuk menampilkan eidget dalam bentuk grid.
+  - Ini berguna untuk menata item dalam bentuk grid, seperti galeri gambar
+- Stack
+  - Ini digunakan untuk menempatkan widget di atas widget lainnya.
+  - Ini berguna ketika kita ingin menumpuk suatu widget di atas widget yang lainnya
+- Expanded dan Flexible
+  - Ini digunakan dalam kombinasi dengan `Row dan Column` untuk memberikan fleksibilitas dalam pengaturan ruang yang dibagi antara widget
+
+3. Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+
+- TextFormField
+  -Ini digunakan untuk menerima input berupa teks, seperti nama produk, harga, dan deskripsi.
+  - TextFormField memberikan antarmuka user yang nyaman dan memungkinkan validasi teks yang dimasukkan.
+- ElevatedButton
+  - Ini digunakan sebagai tombol untuk menyimpan atau mengirimkan data formulir.
+  - ElevatedButton memberikan tampilan yang terangkat dan memudahkan user untuk mengidentifikasi tindakan yang dapat dilakukan.
+- AlertDialog
+  - Ini digunakan untuk menampilkan pesan atau informasi kepada pengguna setelah menyimpan produk.
+  - AlertDialog memberikan antarmuka yang bersifat modul dan dapat menahan eksekusi sampai user memberikan tanggapan.
+- ListView.builder
+  - Ini digunakan untuk menampilkan daftar produk.
+  - ListView.builder memungkinkan pembuatan daftar item yang efisien dan dinamis sesuai dengan jumlah item yang ada.
+- GridView.count
+  - Ini digunakan untuk menampilkan menu utama dengan tata letak grid.
+  - GridView.count memberikan cara yang efisien untuk menata elemen-elemen dalam bentuk grid dengan jumlah kolom yang ditentukan.
+
+4. Bagaimana penerapan clean architecture pada aplikasi Flutter?
+   Penerapan Clean Architecture pada aplikasi Flutter melibatkan pemisahan kode menjadi lapisan-lapisan yang independen dan tergantung pada aturan-aturan tertentu. Clean Architecture terdiri dari tiga lapisan utama, yaitu:
+
+- Lapisan Presentasi (Presentation Layer):
+
+  - Lapisan ini bertanggung jawab untuk menampilkan data kepada pengguna dan menerima input dari pengguna.
+  - Di dalam lapisan ini ada widget-widget Flutter, seperti `StatefulWidget` atau `StatelessWidget`
+  - Di dalam lapisan ini ada Presenter atau ViewModel yang bertanggung jawab untuk mengelola logika aplikasi dan berkomunikasi dengan lapisan use case.
+
+- Lapisan Domain (Domain Layer):
+  - Lapisan ini berisi bisnis logika dan aturan aplikasi.
+  - Di dalam lapisan ini ada model domain, aturan bisnis, dan use case (interactors)
+  - Di lapisan ini tidak boleh ada ketergantungan ke infrastruktur atau detail presentasi
+- Lapisan Data (Data Layer):
+  - Lapisan ini bertanggung jawab untuk mengambil dan menyimpan data.
+  - Di dalam lapisan ini ada Repository, DataSource, dan implementasi infrastruktur seperti API calls, database queries, dan penyimpanan lokal
+  - Lapisan ini berkomunikasi dengan lapisan domain melalui interface dan tidak tahu apa-apa tentang lapisan presentasi.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+========================================= Selesai Tugas PBP 8 ===========================================
 ========================================== Tugas PBP 7 ==================================================
 
 1. Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
@@ -69,4 +153,4 @@ samples, guidance on mobile development, and a full API reference.
 - Mengubah sifat widget halaman menu menjadi stateless dengan cara menghapus kode `colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),` menjadi `MyHomePage()`, melakukan perubahan pada bagian `({super.key, required this.title})` menjadi `({Key? key}) : super(key: key);. Hapus final String title;`, dan menghapus fungsi state yang ada di bawah bagian stateless widget
 - Menambahkan teks dan card dengan cara men-define tipe pada list, menambahkan barang-barang yang dijual ke dalam list, yaitu Lihat Item, Tambah Item, dan Logout, lalu menambakan kode untuk teks card di dalam widget build.
 - Membuat widget stateless baru untuk menampilkan card yang berisi tombol Lihat Item, Tambah Item, dan Logout dengan nama `ShopCard` dan menampilkan SnackBar ketika diklik. Saya menggunakan `ScaffoldMessenger`. Kodenya diisi dengan `content: Text("Kamu telah menekan tombol ${item.name}!")));` sehingga akan sesuai dengan nama tombol yang ditekan
-  ========================================= Selesai Tugas PBP 5 ===========================================
+  ========================================= Selesai Tugas PBP 7 ===========================================

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hana_grosir/menu.dart';
+import 'package:hana_grosir/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
