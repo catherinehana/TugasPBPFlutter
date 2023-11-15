@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 crossAxisCount: 3,
                 shrinkWrap: true,
                 children: items.map((ShopItem item) {
-                  return ShopCard(item: item, products: products);
+                  return ShopCard(item);
                 }).toList(),
               ),
             ],

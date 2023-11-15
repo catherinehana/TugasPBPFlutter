@@ -13,10 +13,11 @@ class ShopItem {
 
 class ShopCard extends StatelessWidget {
   final ShopItem item;
-  final List<Product> products;
+  //final List<Product> products;
 
-  const ShopCard({Key? key, required this.item, required this.products})
-      : super(key: key); // Constructor
+  //const ShopCard({Key? key, required this.item, required this.products})
+  //: super(key: key); // Constructor
+  const ShopCard(this.item, {Key? key}) : super(key: key);
 
   Color getColorForItem(ShopItem item) {
     if (item.name == "Lihat Item") {
