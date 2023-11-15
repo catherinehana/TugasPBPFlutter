@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hana_grosir/widgets/left_drawer.dart';
-import 'package:hana_grosir/screens/menu.dart'; // Impor drawer yang sudah dibuat sebelumnya
+import 'package:hana_grosir/screens/menu.dart';
 import 'package:hana_grosir/widgets/shop_card.dart';
 import 'package:hana_grosir/models/item_model.dart';
 
@@ -184,7 +184,6 @@ class _ShopFormPageState extends State<ShopFormPage> {
                                     Text('Harga: $_price'),
                                     Text('Deskripsi: $_description'),
                                     Text('Ammount: $_ammount'),
-                                    // Tambahkan value lainnya jika ada
                                   ],
                                 ),
                               ),
@@ -199,7 +198,6 @@ class _ShopFormPageState extends State<ShopFormPage> {
                             );
                           },
                         );
-                        //_addProduct(); // Use _addProduct function to add product
                         _formKey.currentState!.reset();
                       }
                     },

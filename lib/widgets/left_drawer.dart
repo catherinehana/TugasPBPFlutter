@@ -37,10 +37,9 @@ class LeftDrawer extends StatelessWidget {
                 Padding(padding: EdgeInsets.all(10)),
                 Text(
                   "Catat seluruh keperluan belanjamu di sini!",
-                  // TODO: Tambahkan gaya teks dengan center alignment, font ukuran 15, warna putih, dan weight biasa
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 15, // Ubah ukuran font menjadi 15
+                    fontSize: 15,
                     color: Colors.white,
                   ),
                 ),
@@ -61,7 +60,7 @@ class LeftDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Tambah Produk'),
+            title: const Text('Tambah Item'),
             // Bagian redirection ke ShopFormPage
             onTap: () {
               Navigator.pushReplacement(
@@ -73,8 +72,8 @@ class LeftDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.checklist),
-            title: const Text('Daftar Produk'),
-            // Bagian redirection ke ShopFormPage
+            title: const Text('Daftar Item'),
+            // Bagian redirection ke ShopListPage
             onTap: () {
               Navigator.pushReplacement(
                 context,

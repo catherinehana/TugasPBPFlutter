@@ -65,9 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 
-// The rest of your code remains unchanged.
-
-
 // class ShopItem {
 //   final String name;
 //   final IconData icon;

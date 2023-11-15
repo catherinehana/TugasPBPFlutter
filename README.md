@@ -77,6 +77,18 @@ samples, guidance on mobile development, and a full API reference.
 - GridView.count
   - Ini digunakan untuk menampilkan menu utama dengan tata letak grid.
   - GridView.count memberikan cara yang efisien untuk menata elemen-elemen dalam bentuk grid dengan jumlah kolom yang ditentukan.
+- Column
+  - Ini digunakan untuk mengatur elemen secara vertikal dari atas ke bawah
+  - Digunakan di kode untuk menata daftar item pada formulir
+- Stack
+  - Ini digunakan untuk menumpuk elemen-elemen di atas satu sama lain
+  - Bisa digunakan ketika ingin menumpuk gambar, icon, dan teks di satu tumpukan
+- Card
+  - Ini digunakan untuk mengelilingi elemen-elemen seperti gambar, teks, atau tombol untuk membuat tampilan kartu
+  - Sering digunakan dalam daftar item atau dalam konteks informasi yang terkandung dalam satu blok visual
+- Padding
+  - Ini digunakan untuk menambahkan jarak (padding) di sekeliling anaknya
+    -Bisa digunakan ketika kita ingin mengatur ruang antara elemen-elemen dalam tata letak
 
 4. Bagaimana penerapan clean architecture pada aplikasi Flutter?
    Penerapan Clean Architecture pada aplikasi Flutter melibatkan pemisahan kode menjadi lapisan-lapisan yang independen dan tergantung pada aturan-aturan tertentu. Clean Architecture terdiri dari tiga lapisan utama, yaitu:
@@ -97,6 +109,28 @@ samples, guidance on mobile development, and a full API reference.
   - Lapisan ini berkomunikasi dengan lapisan domain melalui interface dan tidak tahu apa-apa tentang lapisan presentasi.
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+- Menambahkan drawer menu untuk navigasi dengan membuat folder baru dengan nama widgets dan file baru didalamnya dengan nama left_drawer.dart
+- Menambah kode yang dibutuhkan dan import yang diperlukan misalnya `import 'package:flutter/material.dart';` dan `import 'package:hana_grosir/screens/menu.dart';`
+- Memasukkan routing untuk halaman-halaman yang diimpor ke bagian routing dan menghias drawer dengan memasukkan drawer header
+- Routing yang dipakai adalah halaman utama, tambah item, dan daftar item. Routing halaman utama akan pergi ke halaman utama, routing tambah item akan perke ke tambah item, dan routing daftar item akan pergi ke daftar item
+- Memasukkan drawer ke dalam halaman menu.dart
+- Menambahkan form dan elemn input dengan cara membuat file baru bernama `shoplist_form.dart` dan menambahkan kode ke dalamnya.
+- Mengubah widget `Placeholder` dan menabhkan drawer yang sudah dibuat
+- Membuat variabel baru bernama`_formKey`lalu menambahkan `_formKey` ke dalam atribut key milik widget Form dan mengisi widget Form dengan filed. Ada juga variabel `_name`, `_price`, `_ammount`, `_description`
+- Membuat widget column sebagai child dari `SingleChildScrollView`
+- Membuat widget `TextFormField` yang dibungkus oleh `Padding` sebagai salah satu children dari widget Column.
+- Menambahkan atribut `crossAxisAlignment` untuk mengatur alignment children dari Column.
+- Membuat tiga `TextFormField` yang dibungkus dengan Padding sebagai child selanjutnya dari Column seperti sebelumnya untuk field price, ammount, dan description.
+- Di dalam tiap `TextFormField`, akan ada validator yang meng-handle input di formulir, yaitu setiap elemen tidak boleh kosong dan setiap elemen input harus berisi data dengan tipe data atribut modelnya
+- Membuat tombol `save` sebagai child selanjutnya dari column dan membungkus tombol ke dalam widget padding dan align
+- Menambahkan fungsi `showDialog()` pada bagian `onPressed()` dan memunculkan `AlertDialog` pada fungsi tersebut. Ini akan membuat sebuah `pop-up` setelah menekan tombol save pada halaman formulir tambah item baru
+- Menambahkan fitur navigasi pada tombol dengan cara menambahkan kode tambahan pada OnTap di bawah `ScaffoldMessenger` yang menampilkan snackbar. Kode ini berguna untuk navigate ke route yang sesuai dengan nama tombol, yaitu tambah item dan ddaftar item. Di sini menggunakan `Navigator.push`. Kode ini ditambahkan pada widget `ShopItem` di file menu.dart
+- Memasukkan file shoplist_form.dart dan menu.dart ke folder screens
+- Membuat file baru dengan nama `shop_card.dart` pada folder widgets
+- Memindahkan isi widget `ShopItem` pada menu.dart ke file shop_card.dart di folder widgets
+- Mengimport semua yang diperlukan
+- Membuat file `shop_list_page.dart`yang akan berisi kode untuk bagian daftar produk dan memindahkan file ini ke dalam folder screens
 
 ========================================= Selesai Tugas PBP 8 ===========================================
 ========================================== Tugas PBP 7 ==================================================
