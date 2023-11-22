@@ -15,6 +15,85 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+========================================== Tugas PBP 9 ==================================================
+
+1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+   Iya, kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Pemgambilan data JSON dapat dilakukan dengan menggunakan bahasa pemrograman yang mendukung pengolahan JSON melalui library khusus. Jika kita membuat model, kita membutuhkan analisis data yang lebih dalam, seperti machine learning. Untuk melihat permasalahan apakah pengambilan data JSON lebih baik daripada membuat model, ini akan sesuai dengan kebutuhan dan tujuan kita. Jika kita ingin mengakses atau menampilkan data JSON yang diterima di sumber lain, kita lebih baik menggunakan pengambilan data JSON. Jika kita ingin menganalisis data lebih lanjut atau membuat rekomendasi, kita lebih baik membuat model
+
+2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+   CookieRequest berfungsi untuk mengelola permintaan request
+   CookieRequest berperan dalam mengelola permintaan (request) yang terkait dengan cookie di dalam aplikasi. Kelas ini bertugas mengatur aspek-aspek yang terkait dengan data yang disimpan di sisi klien untuk melacak informasi sesi pengguna. Pentingnya membagikan instance CookieRequest ke semua komponen di aplikasi adalah untuk memastikan bahwa pengelolaan cookie dilakukan secara seragam di seluruh komponen, sehingga informasi sesi pengguna dapat dipelihara dengan konsistensi.
+
+3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+   Pengambilan data dari JSON dan menampilkannya di Flutter melibatkan beberapa langkah umum, yaitu:
+
+- Melakukan permintaan HTTP ke API atau sumber JSON yang menggunakan paket seperti `http` atau paket manejemen keadaan global seperti `provider` atau `get`
+- Mengonversi JSON menjadi objek dart dengan menggunakan `dart:convert`
+- Menggunakan mekanisme manejemen state seperti `setState` atau paket-paket manejemen state seperti `provider`, `get`, atau `bloc` untuk menyimpan dan mengelola data secara global atau lokal
+- Menampilkan data dalam widget dengan menggunakan widget
+- Menangani situasi khusus seperti kegagalan permintaan atau manipulasi data sebelum ditampilkan
+
+4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+   Mekanisme autentikasi dari input data akun pada Flutter ke Django melibatkan beberapa langkah, yaitu:
+
+- Bagian Flutter:
+
+  - Input Data Akun:
+    - Pengguna memasukkan data akun seperti nama pengguna dan kata sandi melalui antarmuka pengguna Flutter.
+  - Permintaan HTTP ke Endpoint Autentikasi Django:
+    - Flutter membuat permintaan HTTP ke endpoint autentikasi Django untuk memverifikasi kredensial pengguna.
+    - Kita dapat menggunakan paket seperti http untuk membuat permintaan HTTP.
+
+- Bagian Django:
+
+  - Handle Permintaan Autentikasi:
+    - Di server Django, buat endpoint untuk menangani
+      permintaan autentikasi.
+    - Menggunakan Django's built-in authenticate dan login untuk memeriksa dan mengotentikasi pengguna.
+  - Menggunakan Django REST Framework (Opsional):
+    - Jika Anda menggunakan Django REST Framework, Anda dapat membuat endpoint menggunakan `APIView` untuk memudahkan pengelolaan autentikasi.
+
+- Dalam tugas ini,
+  - Pertama-tama, kita menggunakan paket pbp_django_auth, sebuah CookieRequest baru dibuat dan dimasukkan ke dalam variabel yang dinamai request. Pada file login.dart, aplikasi akan meminta input teks yang berupa username dan password. Saat formulir tersebut disubmit, fungsi akan dipanggil di mana username dan password akan dikirimkan melalui permintaan (request) ke proyek Django untuk melakukan autentikasi dan login pengguna. Jika proses tersebut berhasil, akan menghasilkan JsonResponse yang menyatakan keberhasilan, sementara jika gagal akan mengembalikan respons yang menyatakan kegagalan.
+
+5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+- `TextField`: Digunakan untuk menerima input teks dari pengguna. Dalam tugas ini, widget ini dimanfaatkan untuk mengumpulkan informasi username dan password selama proses login dan registrasi
+
+- `SizedBox`: DIgunakan untuk menciptakan ruang atau jarak tertentu dalam antarmuka pengguna. Pada tugas ini, digunakan untuk memberikan spasi atau pemisah yang dibutuhkan antara widget TextField untuk username dan password.
+
+- `ElevatedButton`: DIgunakan untuk membuat tombol yang mendapatkan efek elevasi ketika ditekan. Dalam tugas ini, widget ini digunakan sebagai tombol submit pada tahap login dan registrasi, memungkinkan pengguna untuk mengirimkan informasi mereka.
+
+- `TextButton`: Digunakan untuk menciptakan tombol yang berupa teks tanpa latar belakang. Dalam tugas ini, digunakan untuk tombol registrasi, menawarkan pengguna opsi untuk melakukan tindakan tertentu dengan menekan teks tersebut.
+
+- `ListView.builder`: Digunakan untuk menghasilkan daftar item yang dapat digulirkan. Dalam tugas ini, widget ini digunakan untuk menampilkan daftar item yang ada, memberikan pengguna kemampuan untuk melihat konten lebih dari yang terlihat pada layar.
+
+- `Text`: Digunakan untuk menciptakan elemen teks. Pada tugas ini, digunakan untuk menampilkan teks detail ketika item pada daftar item ditekan, memberikan informasi tambahan atau rincian terkait item yang dipilih.
+
+6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+
+- Mengecek deployment dari tugas Django
+- Membuat halaman login pada proyek tugas Flutter dengan membuat django-app authentication pada project DJango, menambahkan authentication ke INSTALLED_APPS di main project settings.py, menjalankan pip install django-cors-headers, menambahkan `corsheaders` ke INSTALLED_APPS, dan menambahkan `corsheaders.middleware.CorsMiddleware` di settings.py aplikasi
+- Menambah variable pada setting.py
+- Membuat fungsi di views.py authentication dan routing url di authentication dan hana_grosir
+- Menginstall package untuk flutter
+- Menggunakan package dengan memodifikasi root widget untuk menyediakan `CookieRequest` library ke semua child widgets dengan menggunakan `Provider`
+- Membuat file login.dart di screens dan mengisinya dengan kode untuk laman login dan mengubah `home: LoginPage()` di main.dart
+- Membuat model kustom dengan cara membuat endpoint `JSON` dan menyalin data `JSON` ke situs web `Quicktype`
+- Mengubah setup name menjadi `Product`, source type menjadi `JSON`, dan language menjadi `Dart` pada situs web Quicktype
+- Menerapkan Fetch Data dari Django untuk ditampilkan ke Flutter dengan cara menambahkan package http, menambahkan kode untuk memperbolehkan akses Internet pada aplikasi Flutter yang sedang dibuat di file `android/app/src/main/AndroidManifest.xml`
+- Melakukan fetch data dari django dengan membuat file `list_product.dart` di folder `lib/screens`, menambahkan impor library yang dibutuhkan dan kode yang dibutuhkan
+- Menambahkan halaman `list_product.dart` ke `widgets/left_drawer.dart `
+- Mengubah fungsi tombol Lihat Item agar mengarahkan ke halaman ProductPage
+- Impor file yang dibutuhkan dan menambahkan ProductPage ke `left_drawer.dart `dan `shop_card.dart`
+- Mengintegrasikan form flutter dengan layanan django dengan cara membuat views baru di views.py pada main dengan nama `create_product_flutter` dan menambahkan routing di `urls.py`
+- DI flutter kita menghubungkan halaman `shoplist_form.dart` dengan `CookieRequest` dan mengubah perintah pada `onPressed()` button sehingga akan routing ke link django
+- Mengimplementasikan fitur logout dengan menambahkan fungsi di `authentication/views.py` dan routing di urls.py
+- Di Flutter, menambahkan kode `request` dan import di `lib/widgets/shop_card.dart`, mengubah perintah `onTap` pada widget `Inkwell` menjadi `onTap: () async`, dan menambahkan kode di dalam async
+- Untuk dapat melihat detail per item, kita perlu membuat file baru bernama detail_page.dart yang akan mengurusi semua detail item dan pada list_product.dart, ditambahkan kode untuk membuat nama item dapat di klik dan akan masuk ke detail_page.dart untuk menampilkan detail per item
+
+========================================= Selesai Tugas PBP 9 ===========================================
+
 ========================================== Tugas PBP 8 ==================================================
 
 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
