@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hana_grosir/screens/login.dart';
 import 'package:http/http.dart' as http;
 
 class RegistrationPage extends StatefulWidget {
@@ -35,6 +36,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (BuildContext context) => LoginPage(),
+                  ));
                 },
                 child: Text('OK'),
               ),

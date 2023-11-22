@@ -110,7 +110,7 @@ class ShopCard extends StatelessWidget {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ShopFormPage(),
+                  builder: (context) => const ShopFormPage(),
                 ));
           } else if (item.name == "Lihat Item") {
             Navigator.push(context,
