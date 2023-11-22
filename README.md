@@ -18,9 +18,11 @@ samples, guidance on mobile development, and a full API reference.
 ========================================== Tugas PBP 9 ==================================================
 
 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
    Iya, kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Pemgambilan data JSON dapat dilakukan dengan menggunakan bahasa pemrograman yang mendukung pengolahan JSON melalui library khusus. Jika kita membuat model, kita membutuhkan analisis data yang lebih dalam, seperti machine learning. Untuk melihat permasalahan apakah pengambilan data JSON lebih baik daripada membuat model, ini akan sesuai dengan kebutuhan dan tujuan kita. Jika kita ingin mengakses atau menampilkan data JSON yang diterima di sumber lain, kita lebih baik menggunakan pengambilan data JSON. Jika kita ingin menganalisis data lebih lanjut atau membuat rekomendasi, kita lebih baik membuat model
 
 2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
    CookieRequest berfungsi untuk mengelola permintaan request
    CookieRequest berperan dalam mengelola permintaan (request) yang terkait dengan cookie di dalam aplikasi. Kelas ini bertugas mengatur aspek-aspek yang terkait dengan data yang disimpan di sisi klien untuk melacak informasi sesi pengguna. Pentingnya membagikan instance CookieRequest ke semua komponen di aplikasi adalah untuk memastikan bahwa pengelolaan cookie dilakukan secara seragam di seluruh komponen, sehingga informasi sesi pengguna dapat dipelihara dengan konsistensi.
 
